@@ -1,6 +1,12 @@
 #include "Game.h"
 
-bool Game::start()
+float verticesA[] = {
+-0.5f, -0.5f, 0.0f,
+ 0.5f, -0.5f, 0.0f,
+ 0.0f,  0.5f, 0.0f
+};
+
+bool Game::initGame()
 {
 	if (setupGLFW())
 	{
@@ -9,7 +15,6 @@ bool Game::start()
 	else
 	{
 		std::cout << "ERROR: GLFW failed to initialise!" << std::endl;
-		glfwTerminate();
 
 		return false;
 	}
@@ -26,9 +31,15 @@ bool Game::start()
 	}
 	m_Window.setViewport();
 
-	update();
+	onStart();
+	startGameLoop();
 
 	return true;
+}
+
+void Game::onStart()
+{
+	m_Renderer.loadDrawingData(verticesA);
 }
 
 void Game::stop()
@@ -61,12 +72,16 @@ bool Game::setupGLAD()
 	return gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 }
 
-void Game::update()
+void Game::startGameLoop()
 {
 	while (!glfwWindowShouldClose(m_Window.getWindow()))
 	{
+		processInput(m_Window.getWindow());
+
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		m_Renderer.draw();
 
 		glfwSwapBuffers(m_Window.getWindow());
 		glfwPollEvents();
@@ -74,4 +89,12 @@ void Game::update()
 
 	// This method might be redundant if nothing more need be destroyed.
 	stop();
+}
+
+void Game::processInput(GLFWwindow* window)
+{
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(window, true);
+	}
 }
