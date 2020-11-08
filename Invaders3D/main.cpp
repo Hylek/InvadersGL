@@ -1,61 +1,27 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include "Game.h"
 
-void framebufferSizeCallback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
 int main(void)
 {
-    // Init GLFW and set window properties.
-    glfwInit();
+    Game game;
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-    // Create GLFW window with OpenGL context.
-    GLFWwindow* window = glfwCreateWindow(800, 600, "Invaders3D", nullptr, nullptr);
-    if (window == NULL)
+    if (game.start())
     {
-        std::cout << "Failed to create GLFW window" << std::endl;
+        std::cout << "Game shutting down..." << std::endl;
+    }
+    else
+    {
+        std::cout << "ERROR: Game failed to launch correctly!" << std::endl;
         glfwTerminate();
 
         return -1;
     }
-    glfwMakeContextCurrent(window);
 
-    // Init GLAD
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        std::cout << "Failed to initialize GLAD" << std::endl;
-
-        return -1;
-    }
-
-    // Set the viewport and the size callback
-    glViewport(0, 0, 800, 600);
-    glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
-
-    // Start loop
-    while (!glfwWindowShouldClose(window))
-    {
-        processInput(window);
-
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
-
-    glfwTerminate();
     return 0;
-}
-
-void framebufferSizeCallback(GLFWwindow* window, int width, int height)
-{
-    glViewport(0, 0, width, height);
 }
 
 void processInput(GLFWwindow* window)
