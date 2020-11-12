@@ -33,17 +33,15 @@ int main(void)
 
         return -1;
     }
+    return 0;
+}
 
-        // glfw: initialize and configure
-    // ------------------------------
+//int main(void)
+//{
 //    glfwInit();
 //    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 //    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 //    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-//
-//#ifdef __APPLE__
-//    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-//#endif
 //
 //    // glfw window creation
 //    // --------------------
@@ -140,9 +138,6 @@ int main(void)
 //    // -----------
 //    while (!glfwWindowShouldClose(window))
 //    {
-//        // input
-//        // -----
-//        processInput(window);
 //
 //        // render
 //        // ------
@@ -170,10 +165,9 @@ int main(void)
 //    // glfw: terminate, clearing all previously allocated GLFW resources.
 //    // ------------------------------------------------------------------
 //    glfwTerminate();
+//
 //    return 0;
-
-    return 0;
-}
+//}
 
 void processInput(GLFWwindow* window)
 {

@@ -13,7 +13,6 @@ const char* fragmentShaderSource = "#version 330 core\n"
 "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
 "}\n\0";
 
-
 Renderer::Renderer()
 {
 	VAO = -1;
@@ -28,7 +27,7 @@ Renderer::~Renderer()
 	glDeleteProgram(shaderProgram);
 }
 
-void Renderer::loadDrawingData(float vertices[])
+void Renderer::loadDrawingData(Window* window, float vertices[], int size)
 {
 	shaderProgram = createShaderProgram();
 
@@ -38,15 +37,15 @@ void Renderer::loadDrawingData(float vertices[])
 
 	// Bind and set vertex buffer data
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
 
 	// Set vertex attributes
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
 	// Unbind VBO and VAO, not strictly required
-	//glBindBuffer(GL_ARRAY_BUFFER, 0);
-	//glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 }
 
 void Renderer::draw()
@@ -111,10 +110,4 @@ unsigned int Renderer::createShaderProgram()
 	glDeleteShader(fragmentShader);
 
 	return program;
-}
-
-void Renderer::setVertexAttributes()
-{
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
 }

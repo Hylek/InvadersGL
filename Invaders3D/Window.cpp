@@ -31,7 +31,7 @@ bool Window::setupWindow(int width, int height, const char* title)
 	m_Width = width;
 	m_Height = height;
 
-	m_Window = glfwCreateWindow(width, height, title, nullptr, nullptr);
+	m_Window = glfwCreateWindow(width, height, title, NULL, NULL);
 	if (m_Window == NULL)
 	{
 		std::cout << "ERROR: Could not create GLFW window!" << std::endl;

@@ -1,11 +1,5 @@
 #include "Game.h"
 
-float verticesA[] = {
--0.5f, -0.5f, 0.0f,
- 0.5f, -0.5f, 0.0f,
- 0.0f,  0.5f, 0.0f
-};
-
 bool Game::initGame()
 {
 	if (setupGLFW())
@@ -29,7 +23,7 @@ bool Game::initGame()
 
 		return false;
 	}
-	m_Window.setViewport();
+	//m_Window.setViewport();
 
 	onStart();
 	startGameLoop();
@@ -39,7 +33,13 @@ bool Game::initGame()
 
 void Game::onStart()
 {
-	m_Renderer.loadDrawingData(verticesA);
+	float verticesA[] = {
+		-0.5f, -0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f,
+		0.0f,  0.5f, 0.0f
+	};
+
+	m_Renderer.loadDrawingData(&m_Window, verticesA, sizeof(verticesA));
 }
 
 void Game::stop()
@@ -51,8 +51,8 @@ bool Game::setupGLFW()
 {
 	glfwInit();
 
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	if (m_Window.setupWindow(800, 600, "Invaders3D"))
