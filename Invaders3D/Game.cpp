@@ -1,5 +1,12 @@
 #include "Game.h"
 
+float verticesA[] = {
+	// Positions         // Colours
+	 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,
+	-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,
+	 0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f
+};
+
 bool Game::initGame()
 {
 	if (setupGLFW())
@@ -23,7 +30,7 @@ bool Game::initGame()
 
 		return false;
 	}
-	//m_Window.setViewport();
+	m_Window.setViewport();
 
 	onStart();
 	startGameLoop();
@@ -33,13 +40,7 @@ bool Game::initGame()
 
 void Game::onStart()
 {
-	float verticesA[] = {
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		0.0f,  0.5f, 0.0f
-	};
-
-	m_Renderer.loadDrawingData(&m_Window, verticesA, sizeof(verticesA));
+	m_Renderer.loadDrawingData(verticesA, sizeof(verticesA));
 }
 
 void Game::stop()

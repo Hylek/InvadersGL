@@ -4,18 +4,20 @@
 #include "Window.h"
 #include <iostream>
 
+
 class Renderer
 {
 public:
 	Renderer();
 	~Renderer();
 
-	void loadDrawingData(Window* window, float vertices[], int size);
+	void loadDrawingData(float vertices[], int vertSize, unsigned int indices[] = nullptr, int indSize = -1);
 	void draw();
 
 private:
 	unsigned int VAO;
 	unsigned int VBO;
+	unsigned int EBO;
 	unsigned int shaderProgram;
 
 	unsigned int createShader(GLenum shaderType, const char* shaderSource);
