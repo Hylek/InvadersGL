@@ -3,6 +3,7 @@
 #include <GLFW/glfw3.h>
 #include "Window.h"
 #include <iostream>
+#include "Shader.h"
 
 
 class Renderer
@@ -15,6 +16,7 @@ public:
 	void draw();
 
 private:
+	Shader shader;
 	unsigned int VAO;
 	unsigned int VBO;
 	unsigned int EBO;

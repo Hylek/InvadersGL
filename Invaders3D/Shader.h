@@ -9,10 +9,11 @@
 class Shader
 {
 public:
-	Shader(const char* vertexPath, const char* fragmentPath);
+	Shader();
 	~Shader();
 
 	unsigned int getShaderProgram();
+	void setupProgram(const char* vertexPath, const char* fragmentPath);
 	void useProgram();
 
 private:

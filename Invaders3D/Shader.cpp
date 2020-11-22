@@ -1,14 +1,31 @@
 #include "Shader.h"
 
-Shader::Shader(const char* vertexPath, const char* fragmentPath)
+Shader::Shader()
+{
+    shaderProgram = 0;
+    vertexShaderSource = nullptr;
+    fragmentShaderSource = nullptr;
+}
+
+Shader::~Shader()
+{
+    glDeleteProgram(shaderProgram);
+}
+
+unsigned int Shader::getShaderProgram()
+{
+	return shaderProgram;
+}
+
+void Shader::setupProgram(const char* vertexPath, const char* fragmentPath)
 {
     std::string vertexCode;
     std::string fragmentCode;
-	std::ifstream vShaderFile;
-	std::ifstream fShaderFile;
+    std::ifstream vShaderFile;
+    std::ifstream fShaderFile;
 
-	vShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-	fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+    vShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+    fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 
     try
     {
@@ -36,16 +53,6 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
 
     // Compile shaders and create program
     shaderProgram = createShaderProgram();
-}
-
-Shader::~Shader()
-{
-    glDeleteProgram(shaderProgram);
-}
-
-unsigned int Shader::getShaderProgram()
-{
-	return shaderProgram;
 }
 
 void Shader::useProgram()
