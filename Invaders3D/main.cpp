@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SDL.h>
+#include <SDL_image.h>
 
 // Written by Daniel Cumbor in 2020. Thanks Covid-19!
 
