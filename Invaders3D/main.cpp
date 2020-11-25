@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
+#include <mat3x3.hpp>
 
 // Written by Daniel Cumbor in 2020. Thanks Covid-19!
 
