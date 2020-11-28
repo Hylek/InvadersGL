@@ -169,7 +169,6 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Shader.h" />
-    <ClInclude Include="stb_image.h" />
     <ClInclude Include="TextureLoader.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

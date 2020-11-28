@@ -12,9 +12,10 @@ public:
 	bool setupWindow(int width, int height, const char* title);
 	GLFWwindow* getWindow();
 
+	int windowWidth;
+	int windowHeight;
+
 private:
 	GLFWwindow* m_Window;
-	int m_Width;
-	int m_Height;
 };
 

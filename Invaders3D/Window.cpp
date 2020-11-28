@@ -2,8 +2,8 @@
 
 Window::Window()
 {
-	m_Height = 0;
-	m_Width = 0;
+	windowHeight = 0;
+	windowWidth = 0;
 	m_Window = NULL;
 }
 
@@ -14,8 +14,8 @@ Window::~Window()
 
 void Window::setViewport(int width, int height)
 {
-	int finalWidth = width == 0 ? m_Width : width;
-	int finalHeight = height == 0 ? m_Height : height;
+	int finalWidth = width == 0 ? windowWidth : width;
+	int finalHeight = height == 0 ? windowHeight : height;
 
 	glViewport(0, 0, finalWidth, finalHeight);
 
@@ -28,8 +28,8 @@ void Window::setViewport(int width, int height)
 
 bool Window::setupWindow(int width, int height, const char* title)
 {
-	m_Width = width;
-	m_Height = height;
+	windowWidth = width;
+	windowHeight = height;
 
 	m_Window = glfwCreateWindow(width, height, title, NULL, NULL);
 	if (m_Window == NULL)
