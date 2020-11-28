@@ -29,8 +29,5 @@ private:
 	unsigned int EBO;
 	unsigned int shaderProgram;
 	unsigned int boxTexture;
-
-	unsigned int createShader(GLenum shaderType, const char* shaderSource);
-	unsigned int createShaderProgram();
 };
 
