@@ -22,6 +22,8 @@ void Window::setViewport(int width, int height)
 	// Not sure why this won't accept class bound functions as the callback use lambda for now. 
 	glfwSetFramebufferSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
 		{
+			glfwGetWindowSize(window, &width, &height);
+			glfwGetFramebufferSize(window, &width, &height);
 			glViewport(0, 0, width, height);
 		});
 }

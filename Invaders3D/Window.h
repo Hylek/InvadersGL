@@ -17,5 +17,7 @@ public:
 
 private:
 	GLFWwindow* m_Window;
+
+	void updateViewport(GLFWwindow* window, int width, int height);
 };
 

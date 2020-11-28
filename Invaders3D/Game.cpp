@@ -121,6 +121,7 @@ bool Game::setupGLFW()
 	if (m_Window.setupWindow(800, 600, "Invaders3D"))
 	{
 		std::cout << "GLFW window created OK." << std::endl;
+		glfwSetWindowSizeLimits(m_Window.getWindow(), 800, 600, GLFW_DONT_CARE, GLFW_DONT_CARE);
 	}
 	else
 	{
