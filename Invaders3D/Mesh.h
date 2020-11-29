@@ -6,6 +6,7 @@
 #include <vector>
 #include <iostream>
 #include "Shader.h"
+#include "TextureLoader.h"
 
 struct Vertex
 {
@@ -14,13 +15,6 @@ struct Vertex
     glm::vec2 TexCoords;
     glm::vec3 Tangent;
     glm::vec3 Bitangent;
-};
-
-struct Texture
-{
-    std::string type;
-    const char* path;
-    unsigned int id;
 };
 
 class Mesh

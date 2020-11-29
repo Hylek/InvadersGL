@@ -63,7 +63,7 @@ void Renderer::loadDrawingData(float vertices[], int vertSize, unsigned int indi
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
-	boxTexture = TextureLoader::loadTexture("damage.jpg");
+	boxTexture = TextureLoader::loadTexture("damage.jpg", "");
 
 	// Wireframe mode. 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
